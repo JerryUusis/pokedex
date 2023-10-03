@@ -102,6 +102,7 @@ label {
 }
 
 .name {
+    text-transform: capitalize;
     text-align: center;
     background-color: var(--name-background-color);
 }
