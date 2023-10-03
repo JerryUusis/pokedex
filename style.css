@@ -47,7 +47,7 @@ h1 {
 }
 
 label {
-
+    color: var(--heading-color);
     padding: 0 1rem;
 }
 
@@ -121,10 +121,20 @@ li {
 }
 
 @media screen and (max-width: 395px) {
+
     .data-card {
         width: 100%;
         height: auto;
         min-width: none;
         min-height: none;
+    }
+
+    .name {
+        padding: 0.25rem;
+    }
+
+    li {
+        height: 100%;
+        padding: 1rem;
     }
 }
