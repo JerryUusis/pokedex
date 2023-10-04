@@ -3,20 +3,33 @@ const cardContainer = document.querySelector(".card-container");
 let pokeData = [];
 
 async function fetchData(url) {
-    fetch(url)
+    await fetch(url)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
-            pokeData = data.results;
-            pokeCards();
+            const fetches = data.results.map((item) => {
+                return fetch(item.url)
+                    .then((res) => res.json())
+                    .then((data) => {
+                        return {
+                            id: data.id,
+                            name: data.name,
+                            img: data.sprites.other["official-artwork"].front_default,
+                            types: data.types,
+                        };
+                    });
+            });
+            Promise.all(fetches).then((res) => {
+                pokeData = res;
+                console.log(pokeData)
+                pokeCards();
+            })
         })
-        
 }
 
 function pokeCards() {
     const cards = pokeData.map(pokemon => {
         return `<div class="data-card">
-        <img src="img/paras.png" alt="Image of pokemon" class="card-image">
+        <img src="${pokemon.img}" alt="Picture of ${pokemon.name}" class="card-image">
         <div class="text-container">
             <h2 class="name">${pokemon.name}</h2>
             <ul class="type-container">
