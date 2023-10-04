@@ -16,6 +16,8 @@
     box-sizing: border-box;
 }
 
+/* Main container */
+
 body {
     height: 100vh;
     width: 100vw;
@@ -107,18 +109,19 @@ label {
     background-color: var(--name-background-color);
 }
 
+/* Type container */
+
 .type-container {
-    display: flex;
     background-color: #2f5fb4;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
-li {
+.type-container p {
+    text-transform: capitalize;
     color: #dddddd;
-    display: inline-block;
-    list-style: none;
-    width: 50%;
-    text-align: center;
-    border: #333 1px solid;
 }
 
 @media screen and (max-width: 395px) {
