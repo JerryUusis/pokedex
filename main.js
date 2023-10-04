@@ -1,4 +1,3 @@
-const URL = "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0"
 const cardContainer = document.querySelector(".card-container");
 const typeContainer = document.querySelector(".type-container");
 const searchBar = document.querySelector("#search");
@@ -11,27 +10,21 @@ searchBar.addEventListener("keyup", (event) => {
     })
 })
 
-async function fetchData(url) {
-    await fetch(url)
-        .then(res => res.json())
-        .then(data => {
-            const fetches = data.results.map((item) => {
-                return fetch(item.url)
-                    .then((res) => res.json())
-                    .then((data) => {
-                        return {
-                            id: data.id,
-                            name: data.name,
-                            img: data.sprites.other["official-artwork"].front_default,
-                            types: data.types,
-                        };
-                    });
-            });
-            Promise.all(fetches).then((res) => {
-                pokeData = res;
-                pokeCards();
-            })
-        })
+async function fetchData() {
+    const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0");
+    const data = await response.json();
+
+    fetchPokemonData(data.results);
+    pokeCards();
+}
+
+// Gets data from main array and turns it into json and pushes it into to pokeData array
+async function fetchPokemonData(array) {
+    array.map(async (pokemon) => {
+        const response = await fetch(pokemon.url);
+        const data = await response.json();
+        pokeData.push(data);
+    })
 }
 
 // 2. connect input and search from pokeDEx array by using
@@ -45,7 +38,7 @@ function pokeCards() {
         <div class="text-container">
             <h2 class="name">${pokemon.name}</h2>
             <div class="type-container">
-                ${pokemon.types.map((type) => getTypes(type)).join("")}</p>
+                <p></p>
             </div>
         </div>
     </div>`
@@ -53,10 +46,4 @@ function pokeCards() {
     cardContainer.innerHTML = cards;
 }
 
-function getTypes(type) {
-    if (type !== "") {
-        return `<p>${type.type.name}</p>`
-    }
-}
-
-fetchData(URL);
+fetchData();
