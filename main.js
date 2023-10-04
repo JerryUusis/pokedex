@@ -1,5 +1,6 @@
 const URL = "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0"
 const cardContainer = document.querySelector(".card-container");
+const typeContainer = document.querySelector(".type-container");
 let pokeData = [];
 
 async function fetchData(url) {
@@ -20,7 +21,6 @@ async function fetchData(url) {
             });
             Promise.all(fetches).then((res) => {
                 pokeData = res;
-                console.log(pokeData)
                 pokeCards();
             })
         })
@@ -28,18 +28,24 @@ async function fetchData(url) {
 
 function pokeCards() {
     const cards = pokeData.map(pokemon => {
+        console.log(pokemon)
         return `<div class="data-card">
         <img src="${pokemon.img}" alt="Picture of ${pokemon.name}" class="card-image">
         <div class="text-container">
             <h2 class="name">${pokemon.name}</h2>
-            <ul class="type-container">
-                <li class="type-1">Grass</li>
-                <li class="type-2">Bug</li>
-            </ul>
+            <div class="type-container">
+                ${pokemon.types.map((type) => getTypes(type)).join("")}</p>
+            </div>
         </div>
     </div>`
     }).join("");
     cardContainer.innerHTML = cards;
+}
+
+function getTypes(type) {
+    if (type !== "") {
+        return `<p>${type.type.name}</p>`
+    }
 }
 
 fetchData(URL);
