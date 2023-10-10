@@ -3,20 +3,21 @@ const typeContainer = document.querySelector(".type-container");
 const searchBar = document.querySelector("#search");
 let pokeData = [];
 
+//Event listener for searchbar with a filtering function
 searchBar.addEventListener("keyup", (event) => {
-    console.log(event.target.value)
-    pokeData.filter(pokemon => {
-        pokemon.name.contain(event)
+    const searchString = event.target.value.toLowerCase();
+    const filteredPokemon = pokeData.filter(pokemon => {
+        return pokemon.name.toLowerCase().includes(searchString);
     })
+    return displayPokeCards(filteredPokemon);
 })
 
 async function fetchData() {
     const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0");
     const data = await response.json();
-
+    
     pokeData = await fetchPokemonProperties(data.results);
-
-    pokeCards();
+    displayPokeCards(pokeData);
 }
 
 async function fetchPokemonProperties(array) {
@@ -38,12 +39,12 @@ function getPokemonType(types) {
     return types.map(type => `<p>${type}</p>`).join("");
 }
 
-// 2. connect input and search from pokeDEx array by using
+// 2. connect input and search from pokeDex array by using
 // the .filter() method
 // https://www.jamesqquick.com/blog/build-a-javascript-search-bar/
 
-function pokeCards() {
-    const cards = pokeData.map(pokemon => {
+function displayPokeCards(array) {
+    const cards = array.map(pokemon => {
         return `<div class="data-card">
                     <img src="${pokemon.img}" alt="Image of pokemon" class="card-image">
                     <div class="text-container">
