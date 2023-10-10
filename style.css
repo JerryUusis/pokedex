@@ -58,49 +58,43 @@ label {
     margin: 1rem;
 }
 
-/* Card section */
-
 .card-container {
     outline: black solid 1px;
     display: flex;
     justify-content: center;
-    align-items: space-evenly;
     gap: 1rem;
     width: 80%;
     height: 80%;
     flex-wrap: wrap;
 }
 
+/* Card section */
+
 .data-card {
-    height: 200px;
-    width: 150px;
-    min-height: 200px;
-    min-width: 150px;
-    border: black 2px solid;
-    display: flex;
-    flex-direction: column;
+
+    width: 225px;
+    height: fit-content;
     transition: var(--transition);
     filter: 
         grayscale(1)
         brightness(1);
 }
 
-.data-card:hover {
-    box-shadow: 0 0 5px;
-    filter: 
-        brightness(1.1)
-        grayscale(0);
-}
-
 .card-image {
     background-color: var(--img-background-color);
     display: block;
-    height: 80%;
+    width: 100%;
 }
 
-.text-container {
-    display: flex;
-    flex-direction: column;
+
+.text-container,
+p,
+img {
+    outline: black solid 1px
+}
+
+.text-container p {
+    padding: 0.25rem;
 }
 
 .name {
@@ -111,26 +105,29 @@ label {
 
 /* Type container */
 
-.type-container {
+.properties-container {
+    text-align: center;
+    align-items: center;
     background-color: #2f5fb4;
-    align-items: center;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
 }
 
-.type-container p {
+.properties-container p {
     text-transform: capitalize;
     color: #dddddd;
 }
 
-@media screen and (max-width: 395px) {
+.data-card:hover {
+    box-shadow: 0 0 5px;
+    filter: 
+        brightness(1.1)
+        grayscale(0);
+}
+
+@media screen and (max-width: 585px) {
 
     .data-card {
         width: 100%;
         height: auto;
-        min-width: none;
-        min-height: none;
     }
 
     .name {
