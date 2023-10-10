@@ -1,6 +1,7 @@
 :root {
     --img-background-color: #dddddd;
     --name-background-color: beige;
+    --blue-color: #2f5fb4;
     --transition: 150ms ease-in-out;
     --heading-color: #ffcc03;
 }
@@ -19,23 +20,21 @@
 /* Main container */
 
 body {
-    height: 100vh;
-    width: 100vw;
-    background: no-repeat url(https://64.media.tumblr.com/dad265ec9076688af927df0e6f99b310/tumblr_obbc9phjzo1tun8kfo1_r7_1280.jpg) center/cover;
     font-family: 'Rubik', sans-serif;
 }
 
 .main-container {
+    background: no-repeat url(https://64.media.tumblr.com/dad265ec9076688af927df0e6f99b310/tumblr_obbc9phjzo1tun8kfo1_r7_1280.jpg) center/cover fixed;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100%;
+
 }
 
 h1 {
     font-family: "Pokemon", sans-serif;
-    -webkit-text-stroke: 3px #2f5fb4;
+    -webkit-text-stroke: 3px var(--blue-color);
     text-shadow: 5px 5px 10px #333;
     font-size: 5rem;
     letter-spacing: 6px;
@@ -46,26 +45,35 @@ h1 {
 .search-container {
     display: flex;
     align-items: center;
+    padding: 2rem;
+    vertical-align: baseline;
 }
 
 label {
     color: var(--heading-color);
     padding: 0 1rem;
+    font-size: 3rem;
+    text-shadow: 0px 0px 7px #333;
 }
 
-#search {
-    padding: 0.25rem;
+input {
+    font-size: 1.5rem;
+    font-family: inherit;
+    box-shadow: 0px 0px 7px #333;
+    border: solid #333 2px;
+    padding: 0.5rem;
     margin: 1rem;
 }
 
+
 .card-container {
-    outline: black solid 1px;
     display: flex;
     justify-content: center;
     gap: 1rem;
-    width: 80%;
-    height: 80%;
+    width: 85%;
+    height: 85%;
     flex-wrap: wrap;
+    margin-bottom: 5rem;
 }
 
 /* Card section */
@@ -98,6 +106,7 @@ img {
 }
 
 .name {
+    padding: 0.25rem 0;
     text-transform: capitalize;
     text-align: center;
     background-color: var(--name-background-color);
@@ -125,17 +134,26 @@ img {
 
 @media screen and (max-width: 585px) {
 
+    label {
+        padding: 0 1rem;
+        font-size: 2rem;
+    }
+    
+    input {
+        font-size: 1rem;
+        border: solid #333 2px;
+        margin: 0;
+    }
+    
+    .search-container {
+        padding: 0;
+        margin-bottom: 1rem;
+    }
+
     .data-card {
         width: 100%;
         height: auto;
     }
 
-    .name {
-        padding: 0.25rem;
-    }
 
-    li {
-        height: 100%;
-        padding: 1rem;
-    }
 }
