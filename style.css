@@ -21,15 +21,14 @@
 
 body {
     font-family: 'Rubik', sans-serif;
+    background: no-repeat url(https://64.media.tumblr.com/dad265ec9076688af927df0e6f99b310/tumblr_obbc9phjzo1tun8kfo1_r7_1280.jpg) center/cover fixed;
 }
 
 .main-container {
-    background: no-repeat url(https://64.media.tumblr.com/dad265ec9076688af927df0e6f99b310/tumblr_obbc9phjzo1tun8kfo1_r7_1280.jpg) center/cover fixed;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
 }
 
 h1 {
@@ -45,15 +44,24 @@ h1 {
 .search-container {
     display: flex;
     align-items: center;
-    padding: 2rem;
+    justify-content: center;
     vertical-align: baseline;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    margin-bottom: 3rem;
+    background-color: none;
+    transition: var(--transition);
 }
 
-label {
-    color: var(--heading-color);
-    padding: 0 1rem;
-    font-size: 3rem;
-    text-shadow: 0px 0px 7px #333;
+.search-container.sticky {
+    background-color: #05271e;
+    opacity: 0.98;
+}
+
+input.sticky:active {
+    opacity: 1;
 }
 
 input {
@@ -61,8 +69,9 @@ input {
     font-family: inherit;
     box-shadow: 0px 0px 7px #333;
     border: solid #333 2px;
-    padding: 0.5rem;
+    padding: 0.25rem;
     margin: 1rem;
+    opacity: 1;
 }
 
 
@@ -134,19 +143,16 @@ img {
 
 @media screen and (max-width: 585px) {
 
-    label {
-        padding: 0 1rem;
-        font-size: 2rem;
-    }
-    
     input {
         font-size: 1rem;
         border: solid #333 2px;
         margin: 0;
+        width: 50%;
+        font-size: 1.75rem;
     }
     
     .search-container {
-        padding: 0;
+        padding: 0.5rem;
         margin-bottom: 1rem;
     }
 

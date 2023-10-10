@@ -1,7 +1,16 @@
 const cardContainer = document.querySelector(".card-container");
 const typeContainer = document.querySelector(".type-container");
 const searchBar = document.querySelector("#search");
+const searchContainer = document.querySelector(".search-container");
 let pokeData = [];
+
+document.addEventListener("scroll", () => {
+    if (window.scrollY > 145) {
+        searchContainer.classList.add("sticky");
+    } else {
+        searchContainer.classList.remove("sticky");
+    }
+})
 
 //Event listener for searchbar with a filtering function
 searchBar.addEventListener("keyup", (event) => {
