@@ -27,10 +27,15 @@ async function fetchPokemonProperties(array) {
             id: data.id,
             name: data.name,
             img: data.sprites.other['official-artwork'].front_default,
-            types: data.types,
+            //List type names
+            types: data.types.map(item => item.type.name),
         };
     })
     return Promise.all(pokemonPromises)
+}
+
+function getPokemonType(types) {
+    return types.map(type => `<p>${type}</p>`).join("");
 }
 
 // 2. connect input and search from pokeDEx array by using
@@ -44,8 +49,7 @@ function pokeCards() {
                     <div class="text-container">
                         <h2 class="name">${pokemon.name}</h2>
                         <div class="properties-container">
-                            <p>Type 1</p>
-                            <p>Type 2</p>
+                            ${getPokemonType(pokemon.types)}
                             <p>Kanto</p>
                             <p>Height: 50cm</p>
                             <p>Weight: 10kg</p>
