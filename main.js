@@ -33,12 +33,16 @@ async function fetchPokemonData(array) {
 
 function pokeCards() {
     const cards = pokeData.map(pokemon => {
-        return `<div class="data-card">
-        <img src="${pokemon.img}" alt="Picture of ${pokemon.name}" class="card-image">
+        return `            <div class="data-card">
+        <img src="img/paras.png" alt="Image of pokemon" class="card-image">
         <div class="text-container">
-            <h2 class="name">${pokemon.name}</h2>
-            <div class="type-container">
-                <p></p>
+            <h2 class="name">Paras</h2>
+            <div class="properties-container">
+                <p>Type 1</p>
+                <p>Type 2</p>
+                <p>Kanto</p>
+                <p>Height: 50cm</p>
+                <p>Weight: 10kg</p>
             </div>
         </div>
     </div>`
@@ -46,4 +50,3 @@ function pokeCards() {
     cardContainer.innerHTML = cards;
 }
 
-fetchData();
