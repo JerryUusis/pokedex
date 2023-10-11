@@ -41,6 +41,37 @@ h1 {
     padding: 1rem 0;
 }
 
+/* Button container */
+
+.btn-content-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    width: 85%;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+button {
+    background-color: var(--heading-color);
+    color: var(--blue-color);
+    font-weight: bold;
+    font-size: 1.25rem;
+    text-align: center;
+    width: 6rem;
+    height: 3rem;
+    font-family: inherit;
+    border: var(--blue-color) 1px solid;
+}
+
+/* Search container */
+
 .search-container {
     display: flex;
     align-items: center;
@@ -77,6 +108,7 @@ input {
     opacity: 1;
 }
 
+/* Card section */
 
 .card-container {
     display: flex;
@@ -87,8 +119,6 @@ input {
     flex-wrap: wrap;
     margin-bottom: 5rem;
 }
-
-/* Card section */
 
 .data-card {
     border: black solid 1px;
@@ -151,6 +181,11 @@ p.type {
 }
 
 @media screen and (max-width: 585px) {
+    
+    .btn-container {
+        width: 95%;
+    }
+
 
     input {
         font-size: 1rem;
