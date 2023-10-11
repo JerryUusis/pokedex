@@ -59,7 +59,7 @@ h1 {
     background-color: #05271e;
     opacity: 0.98;
 }
-
+/* Turn into :focus */
 input.sticky:active {
     opacity: 1;
 }
@@ -88,7 +88,7 @@ input {
 /* Card section */
 
 .data-card {
-
+    border: black solid 1px;
     width: 225px;
     height: fit-content;
     transition: var(--transition);
@@ -103,11 +103,10 @@ input {
     width: 100%;
 }
 
-
-.text-container,
+h2,
 p,
 img {
-    outline: black solid 1px
+    border: black solid 1px
 }
 
 .text-container p {
@@ -121,7 +120,11 @@ img {
     background-color: var(--name-background-color);
 }
 
-/* Type container */
+/* Properties container */
+
+.properties-container p {
+    border: black solid 1px;
+}
 
 .properties-container {
     text-align: center;
@@ -130,8 +133,11 @@ img {
 }
 
 .properties-container p {
-    text-transform: capitalize;
     color: #dddddd;
+}
+
+p.type {
+    text-transform: capitalize;
 }
 
 .data-card:hover {
@@ -160,6 +166,4 @@ img {
         width: 100%;
         height: auto;
     }
-
-
 }

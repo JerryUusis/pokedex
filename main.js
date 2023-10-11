@@ -47,7 +47,7 @@ async function fetchPokemonProperties(array) {
 }
 
 function getPokemonType(types) {
-    return types.map(type => `<p>${type}</p>`).join("");
+    return types.map(type => `<p class = "type">${type}</p>`).join("");
 }
 
 // 2. connect input and search from pokeDex array by using
@@ -57,14 +57,14 @@ function getPokemonType(types) {
 function displayPokeCards(array) {
     const cards = array.map(pokemon => {
         return `<div class="data-card">
-                    <img src="${pokemon.img}" alt="Image of pokemon" class="card-image">
+                    <img src="${pokemon.img}" alt="${pokemon.name}" class="card-image">
                     <div class="text-container">
                         <h2 class="name">#${pokemon.id} ${pokemon.name}</h2>
                         <div class="properties-container">
                             ${getPokemonType(pokemon.types)}
                             <p>Kanto</p>
                             <p>${(pokemon.height * 0.1).toFixed(1)} m</p>
-                            <p>${pokemon.weight * 0.1} kg</p>
+                            <p>${(pokemon.weight * 0.1).toFixed(1)} kg</p>
                         </div>
                     </div>
                 </div>`
