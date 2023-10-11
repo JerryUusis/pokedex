@@ -73,7 +73,7 @@ document.addEventListener("scroll", () => {
 searchBar.addEventListener("keyup", (event) => {
     const searchString = event.target.value.toLowerCase();
     const filteredPokemon = pokeData.filter(pokemon => {
-        return pokemon.name.toLowerCase().includes(searchString);
+        return pokemon.name.toLowerCase().includes(searchString) || pokemon.id.toString().includes(searchString);
     })
     return displayPokeCards(filteredPokemon);
 })
@@ -82,7 +82,7 @@ async function fetchData(genUrl) {
     const response = await fetch(genUrl);
     const data = await response.json();
 
-    
+
     pokeData = await fetchPokemonProperties(data.results);
     displayPokeCards(pokeData);
 }
@@ -108,9 +108,6 @@ function getPokemonType(types) {
     return types.map(type => `<p class = "type">${type}</p>`).join("");
 }
 
-// 2. connect input and search from pokeDex array by using
-// the .filter() method
-// https://www.jamesqquick.com/blog/build-a-javascript-search-bar/
 
 function displayPokeCards(array) {
     const cards = array.map(pokemon => {
