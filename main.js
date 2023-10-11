@@ -3,50 +3,66 @@ const typeContainer = document.querySelector(".type-container");
 const searchBar = document.querySelector("#search");
 const searchContainer = document.querySelector(".search-container");
 const genButtons = document.querySelectorAll(".button");
+const pokemonAmount = document.querySelector("#pokemon-amount");
+let pokemonGenURL = "";
 let pokeData = [];
 let url = "";
 
 // Event listeners for gen buttons to display a generation of pokemon
 genButtons.forEach(button => {
-    button.addEventListener("click", (event) => {
+    button.addEventListener("click", async (event) => {
         if (event.target === genButtons[0]) {
             url = "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0";
+            pokemonGenURL = "https://pokeapi.co/api/v2/generation/1/";
         }
         else if (event.target === genButtons[1]) {
             url = "https://pokeapi.co/api/v2/pokemon?limit=100&offset=151";
+            pokemonGenURL = "https://pokeapi.co/api/v2/generation/2/";
         }
         else if (event.target === genButtons[2]) {
             url = "https://pokeapi.co/api/v2/pokemon?limit=135&offset=251";
+            pokemonGenURL = "https://pokeapi.co/api/v2/generation/3/";
         }
         else if (event.target === genButtons[3]) {
             url = "https://pokeapi.co/api/v2/pokemon?limit=107&offset=386";
+            pokemonGenURL = "https://pokeapi.co/api/v2/generation/4/";
         }
         else if (event.target === genButtons[4]) {
             url = "https://pokeapi.co/api/v2/pokemon?limit=156&offset=493";
+            pokemonGenURL = "https://pokeapi.co/api/v2/generation/5/";
         }
         else if (event.target === genButtons[5]) {
             url = "https://pokeapi.co/api/v2/pokemon?limit=72&offset=649";
+            pokemonGenURL = "https://pokeapi.co/api/v2/generation/6/";
         }
         else if (event.target === genButtons[6]) {
             url = "https://pokeapi.co/api/v2/pokemon?limit=88&offset=721";
+            pokemonGenURL = "https://pokeapi.co/api/v2/generation/7/";
         }
         else if (event.target === genButtons[7]) {
             url = "https://pokeapi.co/api/v2/pokemon?limit=96&offset=809";
+            pokemonGenURL = "https://pokeapi.co/api/v2/generation/8/";
         }
         else if (event.target === genButtons[8]) {
             url = "https://pokeapi.co/api/v2/pokemon?limit=112&offset=905";
+            pokemonGenURL = "https://pokeapi.co/api/v2/generation/9/";
         }
+        fetchData(url);
+        const genPokemonAmount = await fetchGenData(pokemonGenURL);
+        pokemonAmount.textContent = `There are ${genPokemonAmount} pokemon in generation ${event.target.value}`;
+    });
+});
 
-        //This isn't official generation of pokemon I think
-        else if (event.target === genButtons[9]) {
-            url = "https://pokeapi.co/api/v2/pokemon?limit=275&offset=1017";
-        }
-        fetchData(url)
-    })
-})
+async function fetchGenData(pokemonGenURL) {
+    const response = await fetch(pokemonGenURL);
+    const data = await response.json();
+
+    return data.pokemon_species.length;
+}
+
 
 document.addEventListener("scroll", () => {
-    if (window.scrollY > 145) {
+    if (window.scrollY > 349) {
         searchContainer.classList.add("sticky");
     } else {
         searchContainer.classList.remove("sticky");
@@ -65,6 +81,7 @@ searchBar.addEventListener("keyup", (event) => {
 async function fetchData(genUrl) {
     const response = await fetch(genUrl);
     const data = await response.json();
+
     
     pokeData = await fetchPokemonProperties(data.results);
     displayPokeCards(pokeData);
