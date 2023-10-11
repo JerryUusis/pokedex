@@ -39,6 +39,8 @@ async function fetchPokemonProperties(array) {
             img: data.sprites.other['official-artwork'].front_default,
             //List type names
             types: data.types.map(item => item.type.name),
+            weight: data.weight,
+            height: data.height,
         };
     })
     return Promise.all(pokemonPromises)
@@ -57,12 +59,12 @@ function displayPokeCards(array) {
         return `<div class="data-card">
                     <img src="${pokemon.img}" alt="Image of pokemon" class="card-image">
                     <div class="text-container">
-                        <h2 class="name">${pokemon.name}</h2>
+                        <h2 class="name">#${pokemon.id} ${pokemon.name}</h2>
                         <div class="properties-container">
                             ${getPokemonType(pokemon.types)}
                             <p>Kanto</p>
-                            <p>Height: 50cm</p>
-                            <p>Weight: 10kg</p>
+                            <p>${(pokemon.height * 0.1).toFixed(1)} m</p>
+                            <p>${pokemon.weight * 0.1} kg</p>
                         </div>
                     </div>
                 </div>`
