@@ -2,7 +2,48 @@ const cardContainer = document.querySelector(".card-container");
 const typeContainer = document.querySelector(".type-container");
 const searchBar = document.querySelector("#search");
 const searchContainer = document.querySelector(".search-container");
+const genButtons = document.querySelectorAll(".button");
 let pokeData = [];
+let url = "";
+
+// Event listeners for gen buttons to display a generation of pokemon
+genButtons.forEach(button => {
+    button.addEventListener("click", (event) => {
+        if (event.target === genButtons[0]) {
+            url = "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0";
+        }
+        else if (event.target === genButtons[1]) {
+            url = "https://pokeapi.co/api/v2/pokemon?limit=100&offset=151";
+        }
+        else if (event.target === genButtons[2]) {
+            url = "https://pokeapi.co/api/v2/pokemon?limit=135&offset=251";
+        }
+        else if (event.target === genButtons[3]) {
+            url = "https://pokeapi.co/api/v2/pokemon?limit=107&offset=386";
+        }
+        else if (event.target === genButtons[4]) {
+            url = "https://pokeapi.co/api/v2/pokemon?limit=156&offset=493";
+        }
+        else if (event.target === genButtons[5]) {
+            url = "https://pokeapi.co/api/v2/pokemon?limit=72&offset=649";
+        }
+        else if (event.target === genButtons[6]) {
+            url = "https://pokeapi.co/api/v2/pokemon?limit=88&offset=721";
+        }
+        else if (event.target === genButtons[7]) {
+            url = "https://pokeapi.co/api/v2/pokemon?limit=96&offset=809";
+        }
+        else if (event.target === genButtons[8]) {
+            url = "https://pokeapi.co/api/v2/pokemon?limit=112&offset=905";
+        }
+
+        //This isn't official generation of pokemon I think
+        else if (event.target === genButtons[9]) {
+            url = "https://pokeapi.co/api/v2/pokemon?limit=275&offset=1017";
+        }
+        fetchData(url)
+    })
+})
 
 document.addEventListener("scroll", () => {
     if (window.scrollY > 145) {
@@ -10,7 +51,7 @@ document.addEventListener("scroll", () => {
     } else {
         searchContainer.classList.remove("sticky");
     }
-})
+});
 
 //Event listener for searchbar with a filtering function
 searchBar.addEventListener("keyup", (event) => {
@@ -21,8 +62,8 @@ searchBar.addEventListener("keyup", (event) => {
     return displayPokeCards(filteredPokemon);
 })
 
-async function fetchData() {
-    const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0");
+async function fetchData(genUrl) {
+    const response = await fetch(genUrl);
     const data = await response.json();
     
     pokeData = await fetchPokemonProperties(data.results);
@@ -71,5 +112,3 @@ function displayPokeCards(array) {
     }).join("");
     cardContainer.innerHTML = cards;
 }
-
-fetchData();
