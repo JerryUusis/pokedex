@@ -13,24 +13,40 @@
 <body>
     <div class="main-container">
         <h1>Pokédex</h1>
+        <div class="btn-content-container">
+            <div class="btn-container">
+                <button class="button" value="1">Gen I</button>
+                <button class="button" value="2">Gen II</button>
+                <button class="button" value="3">Gen III</button>
+                <button class="button" value="4">Gen IV</button>
+                <button class="button" value="5">Gen V</button>
+                <button class="button" value="6">Gen VI</button>
+                <button class="button" value="7">Gen VII</button>
+                <button class="button" value="8">Gen VIII</button>
+                <button class="button" value="9">Gen IX</button>
+            </div>
+        </div>
+        <p id="pokemon-amount">Choose a generation to display pokemon</p>
         <div class="search-container">
-            <label for="search">Search</label>
-            <input type="text" id="search">
+            <input type="text" id="search" placeholder="Name or id">
+            <!-- <p>Showing 200 of 500 pokemons in Generation II</p> -->
         </div>
         <main class="card-container">
+            <!-- Placeholder data card template-->
             <!-- <div class="data-card">
                 <img src="img/paras.png" alt="Image of pokemon" class="card-image">
                 <div class="text-container">
                     <h2 class="name">Paras</h2>
-                    <div class="type-container">
+                    <div class="properties-container">
                         <p>Type 1</p>
                         <p>Type 2</p>
+                        <p>Kanto</p>
+                        <p>Height: 50cm</p>
+                        <p>Weight: 10kg</p>
                     </div>
                 </div>
             </div> -->
-    </div>
-
-    </main>
+        </main>
     <script src="main.js"></script>
 </body>
 
