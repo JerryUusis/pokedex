@@ -68,8 +68,20 @@ button {
     height: 3rem;
     font-family: inherit;
     border: var(--blue-color) 1px solid;
+    transition: var(--transition);
 }
 
+button:hover {
+    box-shadow: 
+        0 0 7px #333,
+        inset 0 0 4px var(--blue-color);
+}
+
+button:focus {
+    color: var(--heading-color);
+    background-color: var(--blue-color);
+    border-color: var(--heading-color);
+}
 /* Search container */
 
 .search-container {
@@ -181,7 +193,7 @@ p.type {
 }
 
 @media screen and (max-width: 585px) {
-    
+
     .btn-container {
         width: 95%;
     }
