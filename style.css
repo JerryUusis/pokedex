@@ -214,6 +214,10 @@ p.type {
         width: 95%;
     }
 
+    h1 {
+        font-size: 18vw;
+    }
+
     input {
         font-size: 1rem;
         border: solid #333 2px;
