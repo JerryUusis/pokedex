@@ -6,6 +6,10 @@
     --heading-color: #ffcc03;
 }
 
+html {
+    height: -webkit-fill-available;
+}
+
 @font-face {
     font-family: "Pokemon";
     src: url(fonts/pokemon/Pokemon\ Solid.ttf);
@@ -20,6 +24,7 @@
 /* Main container */
 
 body {
+    height: -webkit-fill-available;
     font-family: 'Rubik', sans-serif;
     background: no-repeat url(https://64.media.tumblr.com/dad265ec9076688af927df0e6f99b310/tumblr_obbc9phjzo1tun8kfo1_r7_1280.jpg) center/cover fixed;
 }
@@ -212,10 +217,6 @@ p.type {
 
     .btn-container {
         width: 95%;
-    }
-
-    body {
-        max-height: 100svh;
     }
 
     h1 {
