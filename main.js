@@ -62,6 +62,7 @@ genButtons.forEach(button => {
             url = "https://pokeapi.co/api/v2/pokemon?limit=112&offset=905";
             pokemonGenURL = "https://pokeapi.co/api/v2/generation/9/";
         }
+        searchBar.value = "";
         fetchData(url);
         const genPokemonAmount = await fetchGenData(pokemonGenURL);
         pokemonAmount.textContent = `There are ${genPokemonAmount} pokemon in generation ${event.target.value}`;
@@ -82,7 +83,7 @@ document.addEventListener("scroll", () => {
     } else {
         searchContainer.classList.remove("sticky");
     }
-});
+})
 
 //Event listener for searchbar with a filtering function
 searchBar.addEventListener("keyup", (event) => {
