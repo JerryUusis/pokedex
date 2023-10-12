@@ -8,6 +8,21 @@ let pokemonGenURL = "";
 let pokeData = [];
 let url = "";
 
+//Make gen buttons act as radio buttons
+function toggleGenButtons() {
+    genButtons.forEach(button => {
+        button.classList.add("inactive");
+        button.addEventListener("click", (event) => {
+            genButtons.forEach(button => {
+                button.classList.remove("active");
+                button.classList.add("inactive");
+            })
+            event.target.classList.add("active");
+            event.target.classList.remove("inactive");
+        });
+    });
+}
+
 // Event listeners for gen buttons to display a generation of pokemon
 genButtons.forEach(button => {
     button.addEventListener("click", async (event) => {
@@ -100,7 +115,7 @@ async function fetchPokemonProperties(array) {
             weight: data.weight,
             height: data.height,
         };
-    })
+    });
     return Promise.all(pokemonPromises)
 }
 
@@ -125,3 +140,5 @@ function displayPokeCards(array) {
     }).join("");
     cardContainer.innerHTML = cards;
 }
+
+toggleGenButtons();
