@@ -8,6 +8,21 @@ let pokemonGenURL = "";
 let pokeData = [];
 let url = "";
 
+//Make gen buttons act as radio buttons
+function toggleGenButtons() {
+    genButtons.forEach(button => {
+        button.classList.add("inactive");
+        button.addEventListener("click", (event) => {
+            genButtons.forEach(button => {
+                button.classList.remove("active");
+                button.classList.add("inactive");
+            })
+            event.target.classList.add("active");
+            event.target.classList.remove("inactive");
+        });
+    });
+}
+
 // Event listeners for gen buttons to display a generation of pokemon
 genButtons.forEach(button => {
     button.addEventListener("click", async (event) => {
@@ -73,7 +88,7 @@ document.addEventListener("scroll", () => {
 searchBar.addEventListener("keyup", (event) => {
     const searchString = event.target.value.toLowerCase();
     const filteredPokemon = pokeData.filter(pokemon => {
-        return pokemon.name.toLowerCase().includes(searchString) || pokemon.id.toString().includes(searchString);
+        return pokemon.name.toLowerCase().includes(searchString) || pokemon.id.toString().includes(searchString) || pokemon.types.includes(searchString);
     })
     return displayPokeCards(filteredPokemon);
 })
@@ -100,7 +115,7 @@ async function fetchPokemonProperties(array) {
             weight: data.weight,
             height: data.height,
         };
-    })
+    });
     return Promise.all(pokemonPromises)
 }
 
@@ -117,7 +132,6 @@ function displayPokeCards(array) {
                         <h2 class="name">#${pokemon.id} ${pokemon.name}</h2>
                         <div class="properties-container">
                             ${getPokemonType(pokemon.types)}
-                            <p>Kanto</p>
                             <p>${(pokemon.height * 0.1).toFixed(1)} m</p>
                             <p>${(pokemon.weight * 0.1).toFixed(1)} kg</p>
                         </div>
@@ -126,3 +140,5 @@ function displayPokeCards(array) {
     }).join("");
     cardContainer.innerHTML = cards;
 }
+
+toggleGenButtons();

@@ -58,7 +58,7 @@ h1 {
     margin-bottom: 2rem;
 }
 
-button {
+button.inactive {
     background-color: var(--heading-color);
     color: var(--blue-color);
     font-weight: bold;
@@ -71,17 +71,24 @@ button {
     transition: var(--transition);
 }
 
+button.active {
+    background-color: var(--heading-color);
+    color: var(--blue-color);
+    font-size: 1.25rem;
+    text-align: center;
+    width: 6rem;
+    height: 3rem;
+    color: var(--heading-color);
+    background-color: var(--blue-color);
+    border-color: var(--heading-color);
+}
+
 button:hover {
     box-shadow: 
         0 0 7px #333,
         inset 0 0 4px var(--blue-color);
 }
 
-button:focus {
-    color: var(--heading-color);
-    background-color: var(--blue-color);
-    border-color: var(--heading-color);
-}
 /* Search container */
 
 .search-container {
