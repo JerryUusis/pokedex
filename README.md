@@ -1,8 +1,8 @@
 <!-- -->
-### Pokedex
+<h1>Pokedex</h1>
 
 <!-- -->
-#### Pokedex is an electronic device designed to catalogue and provide information regarding the various species of Pokémon featured in the Pokémon video game, anime and manga series. 
+<h3>Pokedex is an electronic device designed to catalogue and provide information regarding the various species of Pokémon featured in the Pokémon video game, anime and manga series.</h3>
 
 *Source: https://poke-pikachu.fandom.com/wiki/Pok%C3%A9dex*
 
