@@ -214,6 +214,10 @@ p.type {
         width: 95%;
     }
 
+    body {
+        max-height: 100svh;
+    }
+
     h1 {
         font-size: 18vw;
     }
@@ -229,6 +233,15 @@ p.type {
     .search-container {
         padding: 0.5rem;
         margin-bottom: 1rem;
+    }
+
+    .card-container {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        width: 85%;
+        height: 85%;
+        margin-bottom: 5rem;
     }
 
     .data-card {
