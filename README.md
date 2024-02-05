@@ -6,6 +6,8 @@ Pokedex is an electronic device designed to catalogue and provide information re
 
 Welcome to the Pokédex, a web application that allows you to explore Pokémon information based on different generations.
 
+Pokededx is hosted live [here](https://bucolic-cascaron-12d217.netlify.app/) using Netlify.
+
 ## Features
 
 - View Pokémon from different generations.
